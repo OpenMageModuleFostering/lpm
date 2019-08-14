@@ -1,0 +1,9 @@
+<?php $order = Mage::getModel("sales/order")->load(Mage::getSingleton('checkout/session')->getLastOrderId()) ?>
+
+<?php if ("crvlegalpayment" == $order->getPayment()->getMethodInstance()->getCode()) { ?>
+    <div class="pdf">
+        <a href="<?php echo Mage::getUrl('crvlegalpayment/processing/download') ?>">
+            <?php echo Mage::helper("crvlegalpayment")->__("Download receip") ?>
+        </a>
+    </div>
+<?php } ?>

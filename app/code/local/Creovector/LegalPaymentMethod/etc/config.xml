@@ -1,0 +1,179 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category    Webxmores
+ * @package     Creovector_LegalPaymentMethod
+ * @copyright   Copyright (c) 2011 Webxmore 
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Creovector_LegalPaymentMethod>
+            <version>1.0.0</version>
+        </Creovector_LegalPaymentMethod>
+    </modules>
+    <global>
+        <models>
+            <crvlegalpayment>
+                <class>Creovector_LegalPaymentMethod_Model</class>
+                <resourceModel>crvlegalpayment_mysql4</resourceModel>
+            </crvlegalpayment>
+            <crvlegalpayment_mysql4>
+                <class>Creovector_LegalPaymentMethod_Model_Mysql4</class>
+                <entities>    
+                    <order>
+                        <table>crvlegalpayment_orders_info</table>
+                    </order>
+                </entities>
+            </crvlegalpayment_mysql4>
+        </models>
+        <helpers>
+            <crvlegalpayment>
+                <class>Creovector_LegalPaymentMethod_Helper</class>
+            </crvlegalpayment>
+        </helpers>
+        <resources>
+            <crvlegalpayment_setup>
+                <setup>
+                    <module>Creovector_LegalPaymentMethod</module>
+                    <class>Mage_Eav_Model_Entity_Setup</class> 
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </crvlegalpayment_setup>
+            <crvlegalpayment_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </crvlegalpayment_write>
+            <crvlegalpayment_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </crvlegalpayment_read>
+        </resources>
+        <blocks>
+            <crvlegalpayment>
+                <class>Creovector_LegalPaymentMethod_Block</class>
+            </crvlegalpayment>
+             <adminhtml>  
+                <rewrite> 
+                    <sales_order_view_tab_info>Creovector_LegalPaymentMethod_Block_Adminhtml_Info</sales_order_view_tab_info>  
+                </rewrite>  
+            </adminhtml>  
+        </blocks>
+        <events>
+            <sales_order_save_after>
+                <observers>
+                    <customer_first_order>
+                        <class>crvlegalpayment/observer</class>
+                        <method>salesOrderSaveAfter</method>
+                    </customer_first_order>
+                </observers>
+            </sales_order_save_after>			
+        </events>
+    </global>
+
+    <frontend>
+        <secure_url>
+            <crvlegalpayment_processing>crvlegalpayment/processing</crvlegalpayment_processing>
+        </secure_url>
+        <routers>
+            <crvlegalpayment>
+                <use>standard</use>
+                <args>
+                    <module>Creovector_LegalPaymentMethod</module>
+                    <frontName>crvlegalpayment</frontName>
+                </args>
+            </crvlegalpayment>
+        </routers>
+        <translate>
+            <modules>
+                <Creovector_LegalPaymentMethod>
+                    <files>
+                        <default>Creovector_LegalPaymentMethod.csv</default>
+                    </files>
+                </Creovector_LegalPaymentMethod>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <crvlegalpayment>
+                    <file>crvpayment/legal.xml</file>
+                </crvlegalpayment>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <crvlegalpayment after="Mage_Adminhtml">Creovector_LegalPaymentMethod</crvlegalpayment>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Creovector_LegalPaymentMethod>
+                    <files>
+                        <default>Creovector_LegalPaymentMethod.csv</default>
+                    </files>
+                </Creovector_LegalPaymentMethod>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <crvlegalpayment>
+                    <file>crvlegalpayment.xml</file>
+                </crvlegalpayment>
+            </updates>
+        </layout>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <crvlegalpayment translate="title" module="crvlegalpayment">
+                                            <title>Legal Payment Mathod Settings</title>
+                                        </crvlegalpayment>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+    <default>
+        <payment>
+            <crvlegalpayment>
+                <active>0</active>
+                <model>crvlegalpayment/legal</model>
+                <title>Legal Payment Method</title> 
+                <allowspecific>0</allowspecific>
+            </crvlegalpayment>
+        </payment>
+    </default>
+</config>

@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/lpm",
+    "type": "magento-module",
+    "license": "GPL",
+    "homepage": "",
+    "description": "This module implements payment method via bank translation for legal entities",
+    "authors": [
+    {
+        "name": "Oleg V. Kryuchin",
+        "email": "kryuchov@gmail.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}

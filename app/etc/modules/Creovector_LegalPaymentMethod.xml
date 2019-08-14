@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Creovector_LegalPaymentMethod>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Creovector_LegalPaymentMethod>
+    </modules>
+</config>

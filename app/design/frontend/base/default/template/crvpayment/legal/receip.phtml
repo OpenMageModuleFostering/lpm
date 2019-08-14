@@ -1,0 +1,194 @@
+<!--Квитанция банка для юридического лица
+<?php echo $this->getStoreName() ?>
+&nbsp;&nbsp; 
+<?php echo $this->getStorePhone() ?>
+&nbsp;&nbsp; 
+<?php echo $this->getStoreEmail() ?>
+
+&nbsp;&nbsp;ИНН/КПП: <?php echo $this->getBankAccount("tax") ?>/
+<?php echo $this->getBankAccount("classifier") ?>      
+Р/С: <?php echo $this->getBankAccount("account") ?>
+
+ &nbsp;&nbsp;в <?php echo $this->getBankAccount("name") ?> г. <?php echo $this->getBankAccount("city") ?>
+-->
+<?php $date = new DateTime(); ?>
+<table style="width: 200mm; margin-top: -16px; margin-left: -4px">
+    <tr>
+        <td colspan="16" >&nbsp;</td>
+        <td colspan="4" class="tp btm rgh lf">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="2" class="tp">Поступ. <br>в банк плат.</td>
+        <td colspan="2">&nbsp;</td>
+        <td colspan="2" class="tp">Списано со сч. плат.</td>
+        <td colspan="2">&nbsp;</td>
+        <td colspan="10"></td>
+        <td colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td style="width: 8mm"></td>
+        <td style="width: 8mm"></td>
+        <td style="width: 8mm"></td>
+        <td style="width: 8mm"></td>
+        <td style="width: 8mm"></td>
+        <td style="width: 8mm"></td>
+        <td style="width: 8mm"></td>
+        <td style="width: 1mm"></td>
+        <td style="width: 8mm"></td>
+        <td style="width: 8mm"></td>
+        <td style="width: 1mm"></td>
+        <td style="width: 1mm"></td>
+        <td style="width: 1mm"></td>
+        <td style="width: 8mm"></td>
+        <td style="width: 8mm"></td>
+        <td style="width: 8mm"></td>
+        <td style="width: 8mm"></td>
+        <td style="width: 8mm"></td>
+        <td style="width: 8mm"></td>
+        <td style="width: 8mm"></td>
+    </tr>
+    <tr>
+        <td colspan="6" rowspan="2"><h3>ПЛАТЕЖНОЕ ПОРУЧЕНИЕ №__</h3></td>
+        <td colspan="12">&nbsp;</td>
+        <td colspan="2" class="tp btm rgh lf"></td>
+    </tr>
+    <tr>
+        <td colspan="6" class="tp" style="text-align:center;">Дата</td>
+        <td colspan="2" style="width: 16px">&nbsp;</td>
+        <td colspan="2" class="tp" style="text-align:center;">Вид платежа</td>
+        <td colspan="2" style="width: 16px">&nbsp;</td>
+        <td colspan="4">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="20">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="2" class="btm rgh">Сумма прописью</td>
+        <td colspan="6" class="btm"><?php echo Mage::helper("crvlegalpayment")->num2str($this->getOrderTotal(false)) ?></td>
+        <td colspan="12" class="btm">&nbsp;</td>
+    </tr>
+    <tr>
+        <td class="btm rgh" colspan="4">ИНН <?php echo $this->getCustomerCompany("tax") ?></td>
+        <td class="btm rgh" colspan="4">КПП <?php echo $this->getCustomerCompany("classifier") ?></td>
+        <td class="rgh" colspan="2">Сумма</td>
+        <td colspan="10" ><?php echo $this->getOrderTotal() ?></td>
+    </tr> 
+    
+  
+    <tr>
+        <td colspan="8" rowspan="2" class="rgh"><?php echo $this->getCustomerCompany("company") ?></td>
+        <td colspan="2" class="rgh btm">&nbsp;</td>
+        <td colspan="10" class="btm">&nbsp;</td>
+    </tr>
+    <tr>
+        <td class="rgh" colspan="2">Сч. №</td>
+        <td colspan="10"><?php echo $this->getCustomerCompany("bankсorresponding") ?></td>
+    </tr>
+    <tr>
+        <td colspan="8" class="btm rgh mini">Плательщик</td>
+        <td class="btm rgh" colspan="2">&nbsp;</td>
+        <td colspan="10">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="8" class="rgh"><?php echo $this->getCustomerCompany("bankname") ?></td>
+        <td class="rgh" colspan="2">БИК</td>
+        <td colspan="10"><?php echo $this->getCustomerCompany("banknumber") ?></td>
+    </tr>
+    <tr>
+        <td colspan="8" class="btm rgh mini">Банк плательщика</td>
+        <td class="rgh btm" colspan="2">Сч. №</td>
+        <td colspan="10" class="btm"><?php echo $this->getCustomerCompany("bankaccount") ?></td>
+    </tr>
+    <tr>
+        <td colspan="8" class="rgh"><?php echo $this->getBankAccount("name") ?></td>
+        <td class="rgh" colspan="2">БИК</td>
+        <td colspan="10"><?php echo $this->getBankAccount("bank") ?></td>
+    </tr>
+    <tr>
+        <td colspan="8" class="btm rgh mini">Банк получателя</td>
+        <td class="rgh btm" colspan="2">Сч. №</td>
+        <td colspan="10" class="btm"><?php echo $this->getBankAccount("account") ?></td>
+    </tr>
+    <tr>
+        <td class="btm rgh" colspan="4">ИНН <?php echo $this->getBankAccount("tax") ?></td>
+        <td class="btm rgh" colspan="4">КПП <?php echo $this->getBankAccount("classifier") ?></td>
+        <td class="rgh" colspan="2">Сч. №</td>
+        <td colspan="10" rowspan="2" class="btm"><?php echo $this->getBankAccount("сorresponding") ?></td>
+    </tr>
+    <tr>
+        <td class="rgh" colspan="8" rowspan="3"><?php echo $this->getStoreName() ?></td>
+        <td class="rgh btm" colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="2" class="rgh btm">Вид оп.</td>
+        <td class="rgh" colspan="4">&nbsp;</td>
+        <td colspan="2" class="rgh btm">Сроп плат.</td>
+        <td colspan="4" rowspan="3" class="btm">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="2" class="rgh btm">Наз. пл.</td>
+        <td class="rgh" colspan="4">&nbsp;</td>
+        <td class="rgh btm" colspan="2">Очер. плат.</td>
+    </tr>
+    <tr>
+        <td class="rgh mini btm" colspan="8">Получатель</td>
+        <td class="rgh btm" colspan="2">Код</td>
+        <td class="btm rgh" colspan="4">&nbsp;</td>
+        <td class="rgh btm" colspan="2">Рез. поле</td>
+    </tr>
+    <tr>
+        <td class="btm rgh" colspan="2"> &nbsp;</td>
+        <td class="btm rgh" colspan="2">&nbsp;</td>
+        <td class="btm rgh" >&nbsp;</td>
+        <td class="btm rgh" colspan="4">&nbsp;</td>       
+        <td class="btm rgh" colspan="6">&nbsp;</td>      
+        <td class="btm rgh" colspan="3">&nbsp;</td>      
+        <td class="btm rgh" colspan="2">&nbsp;</td>      
+    </tr>
+    <tr><td colspan="20"></td></tr>
+    <tr>
+        <td colspan="20" rowspan="3">
+            Покупка товара по договору <?php echo $this->getOrderIncrementId() ?> 
+            от <?php echo $date->format("«d» m.Y г."); ?>, в том числе НДС <?php echo $this->getOrderTotal() ?>.
+        </td>
+    </tr>
+    <tr></tr>
+    <tr></tr>
+    <tr>
+        <td colspan="20" class="mini btm">Назначение платежа</td>
+    </tr>
+    <tr>
+        <td colspan="8"></td>
+        <td colspan="6">Подписи</td>
+        <td colspan="6">Отметки банка</td>
+    </tr>
+    <tr>
+        <td colspan="20">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="8"></td>
+        <td colspan="6" class="btm">&nbsp;</td>
+        <td colspan="6">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="2">&nbsp;</td>
+        <td>М.П.</td>
+        <td colspan="17">&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="8"></td>
+        <td colspan="6" class="btm">&nbsp;</td>
+        <td colspan="6">&nbsp;</td>
+    </tr> 
+</table>
+
+
+<style>
+    table td {height: 24px}
+
+    .btm {border-bottom: 1pt solid rgb(0, 0, 0);}
+    .tp {border-top: 1pt solid rgb(0, 0, 0);}
+    .lf {border-left: 1pt solid rgb(0, 0, 0);}
+    .rgh {border-right: 1pt solid rgb(0, 0, 0);}
+    .mini {font-size: 12px; font-style: italic;}
+</style>
